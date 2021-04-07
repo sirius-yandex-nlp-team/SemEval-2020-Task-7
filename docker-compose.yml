@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  task_1_cbow: &task
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./exp1:/workdir/exp1
+      - ./exp2:/workdir/exp2
+    environment: 
+     - CONFNAME=task_1_cbow
+  task_1_bert:
+    <<: *task
+    environment: 
+     - CONFNAME=task_1_bert
+  task_1_roberta:
+    <<: *task
+    environment: 
+     - CONFNAME=task_1_roberta
+  task_2_cbow:
+    <<: *task
+    environment: 
+     - CONFNAME=task_2_cbow
+  task_2_bert:
+    <<: *task
+    environment: 
+     - CONFNAME=task_2_bert
+  task_2_roberta:
+    <<: *task
+    environment: 
+     - CONFNAME=task_2_roberta
