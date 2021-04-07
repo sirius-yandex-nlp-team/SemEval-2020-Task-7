@@ -247,6 +247,7 @@ if args.do_eval:
     test_metrics = trainer_class.evaluate(args, model, task.test_with_label_data)
     test_metrics = {k: np.around(float(v), 6) for k, v in test_metrics.items()}
     test_json = json.dumps(test_metrics, indent=2)
+    json.dump(test_metrics, open(os.path.join(exp_dir, "metrics.json"), "w"), indent=2)
     log.info(f"\ntest result: {test_json}")
 
     # write prediciton for analysis
