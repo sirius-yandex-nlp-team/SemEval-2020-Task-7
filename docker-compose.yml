@@ -11,6 +11,11 @@ services:
       - ./data:/workdir/data
     environment: 
      - CONFNAME=task_1_cbow
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - capabilities: [gpu]
   task_1_bert:
     <<: *task
     environment: 
