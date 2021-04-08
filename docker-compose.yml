@@ -8,6 +8,7 @@ services:
     volumes:
       - ./exp1:/workdir/exp1
       - ./exp2:/workdir/exp2
+      - ./data:/workdir/data
     environment: 
      - CONFNAME=task_1_cbow
   task_1_bert:
