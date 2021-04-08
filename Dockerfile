@@ -1,21 +1,4 @@
-FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
-
-ARG PYTHON_VERSION=3.6
-ARG CONDA_VERSION=3
-ARG CONDA_PY_VERSION=4.5.11
-
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y — no-install-recommends python3-pip python3-dev wget \
-    bzip2 libopenblas-dev pbzip2 libgl1-mesa-glx && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-ENV PATH /opt/conda/bin:$PATH
-RUN wget — quiet https://repo.anaconda.com/miniconda/Miniconda$ CONDA_VERSION-$ CONDA_PY_VERSION-Linux-x86_64.sh -O ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    rm ~/miniconda.sh && \
-    /opt/conda/bin/conda clean -tipsy && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+FROM continuumio/miniconda3
 
 RUN conda --version
 
